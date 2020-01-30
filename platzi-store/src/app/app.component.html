@@ -1,2 +1,13 @@
 <input type="text" [(ngModel)]= "title">
 {{ title }}
+
+<!-- Ing es una directiva que nos permite crear una condicional -->
+
+<!-- Desafío -->
+<div *ngIf= "title !== platzi-store ">
+  si es igual!
+</div>
+
+<div *ngIf= "title === otro-nombre">
+  no es igual :(
+</div>
