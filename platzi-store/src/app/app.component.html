@@ -4,10 +4,20 @@
 <!-- Ing es una directiva que nos permite crear una condicional -->
 
 <!-- Desafío -->
-<div *ngIf= "title !== platzi-store ">
+<div *ngIf= "title !== 'platzi-store' ">
   si es igual!
 </div>
 
-<div *ngIf= "title === otro-nombre">
+<div *ngIf= "title === 'otro-nombre'">
   no es igual :(
 </div>
+
+<button (click)="addItem()">Add item</button>
+
+<ul>
+  <li *ngFor= "let name of items; index as i" >
+    {{ name }} {{ i }}
+    <button (click)="deleteItem(i)">delete</button>
+  </li>
+</ul>
+
