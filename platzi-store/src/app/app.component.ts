@@ -55,12 +55,17 @@ export class AppComponent {
     description: 'bla bla bla bla bla'
   },
 ];
-  
+
   addItem() {
     this.items.push('nuevo item');
   }
-  
+
   deleteItem(index: number){
     this.items.splice(index, 1);
+  }
+
+  clickProduct(id: number) {
+    console.log('product')
+    console.log(id)
   }
 }
