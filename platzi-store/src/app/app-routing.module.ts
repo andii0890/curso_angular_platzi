@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { DemoComponent } from './demo/components/demo/demo.component';
-import { PageNotFoundComponent } from './page-not-found/components/page-not-found/page-not-found.component';
 import { LayoutComponent } from './layout/layout.component';
+
+import {AdminGuard } from './admin.guard';
+import { DemoModule } from './demo/demo.module';
+import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 
 
 const routes: Routes = [
@@ -22,25 +24,24 @@ const routes: Routes = [
       },
       {
         path: 'products',
-        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
-      },
-      {
-        path: 'products/:id',
-        loadChildren: () => import('./products/product-detail.module').then(m => m.ProductDetailModule)
+        canActivate: [AdminGuard],
+        loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
       },
       {
         path: 'contact',
+        canActivate: [AdminGuard],
         loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
-      }
+      },
+      {
+        path: 'demo',
+        canActivate: [AdminGuard],
+        loadChildren: () => import('./demo/demo.module').then(m => DemoModule)
+      },
     ]
   },
   {
-    path: 'demo',
-    component: DemoComponent
-  },
-  {
     path: '**',
-    component: PageNotFoundComponent
+    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => PageNotFoundModule)
   }
 ];
 
