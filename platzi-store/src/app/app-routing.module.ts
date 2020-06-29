@@ -4,9 +4,6 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 
 import {AdminGuard } from './admin.guard';
-import { DemoModule } from './demo/demo.module';
-import { PageNotFoundModule } from './page-not-found/page-not-found.module';
-
 
 const routes: Routes = [
   {
@@ -35,13 +32,17 @@ const routes: Routes = [
       {
         path: 'demo',
         canActivate: [AdminGuard],
-        loadChildren: () => import('./demo/demo.module').then(m => DemoModule)
+        loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
       },
     ]
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
     path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => PageNotFoundModule)
+    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
   }
 ];
 
