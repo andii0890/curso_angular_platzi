@@ -12,9 +12,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
-  declarations: [ProductFormComponent, NavComponent],
+  declarations: [
+    ProductFormComponent,
+    DashboardComponent,
+    TableComponent,
+    NavComponent
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
