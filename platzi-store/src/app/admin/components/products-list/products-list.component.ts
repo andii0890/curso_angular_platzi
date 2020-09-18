@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChildActivationStart } from '@angular/router';
 import { ProductsService } from './../../../core/services/products/products.service';
 
 @Component({
@@ -16,7 +17,9 @@ export class ProductsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.fetchProducts();
   }
+
   fetchProducts() {
     this.productsService.getAllProducts()
     .subscribe(products => {
@@ -24,4 +27,15 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
+  deleteProduct(id: string) {
+    this.productsService.deleteProduct(id)
+      .subscribe(rta => {
+        this.fetchProducts();
+        for (let i = 0; i < this.products.length - 1; i++) {
+          if (this.products === rta) {
+            this.products = this.products.splice(i, 1);
+          }
+        }
+      });
+  }
 }
