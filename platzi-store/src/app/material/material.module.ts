@@ -13,6 +13,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { LayoutModule } from '@angular/cdk/layout';
+
 
 
 
@@ -33,7 +37,12 @@ import { MatSortModule } from '@angular/material/sort';
     MatGridListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTableModule,
+    MatSidenavModule,
+    MatListModule,
+    LayoutModule
+
 
   ], exports: [
     MatButtonModule,
@@ -48,7 +57,12 @@ import { MatSortModule } from '@angular/material/sort';
     MatGridListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTableModule,
+    MatSidenavModule,
+    MatListModule,
+    LayoutModule
+
   ]
 })
 export class MaterialModule { }
